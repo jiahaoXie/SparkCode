@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>dblab</groupId>
+    <artifactId>WordCount</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <properties>
+        <spark.version>2.1.0</spark.version>
+        <scala.version>2.11</scala.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_${scala.version}</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming_${scala.version}</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql_${scala.version}</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-hive_${scala.version}</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-mllib_${scala.version}</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-util_${scala.version}</artifactId>
+        </dependency>
+        <!--添加hbase依赖 -->
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-it</artifactId>
+            <version>1.1.3</version>
+        </dependency>
+        <!--添加Spark Streaming读取kafka的依赖-->
+        <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-streaming-kafka-0-8 -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming-kafka-0-8_2.11</artifactId>
+            <version>2.1.0</version>
+        </dependency>
+        <!--添加SparkStreaming集成Flume-->
+        <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-streaming-flume -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming-flume_2.11</artifactId>
+            <version>2.1.0</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <!--添加scala代码打包相关需要-->
+            <plugin>
+                <groupId>org.scala-tools</groupId>
+                <artifactId>maven-scala-plugin</artifactId>
+                <version>2.15.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+        <!-- 打包时资源的具体配置 -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <!-- 打包时排除指定目录 -->
+                    <exclude>dev/*</exclude>
+                    <exclude>prod/*</exclude>
+                    <exclude>pre/*</exclude>
+                    <exclude>test/*</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <!-- 将指定目录下的文件拷贝到默认位置src/main/resources -->
+                <directory>src/main/resources/${profiles.active}</directory>
+            </resource>
+        </resources>
+    </build>
+</project>

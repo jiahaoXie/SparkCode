@@ -1,0 +1,17 @@
+class1 xjh 90 88 79 
+class2 axc 56 67 74 
+class1 asdfv 87 89 
+class3 cadfg 87 78 
+class1 sc 76 86 78 
+class2 scad 88 89 67 100
+class1 scadv 95 68 87 67 
+class3 cad 88 98 78 88 
+class3 adv 95 88 90 89
+class1 sacdv 74 89 78 88
+class3 dv 74 56 87 97
+class2 cad 87 78 88 87 
+class2 sacsdv 67 88 78 77
+class2 acasd 77 79 89 88
+class1 dcada 92 87 90 76
+class2 dvsd 80 87 90 83
+class3 ssdv 67 91 95 92
