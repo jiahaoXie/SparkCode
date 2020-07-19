@@ -17,10 +17,10 @@ object Transformation {
 //      print(i+" ")
 //    println()
 
-    //2.利用filter过滤得到其中的偶数
-//    val evenNum=numbers.filter(num=>num%2==0)
-//    for (i<-evenNum)
-//      print(i+" ")
+    //2.利用filter过滤 得到其中的偶数
+    val evenNum=numbers.filter(num=>num%2==0)
+    for (i<-evenNum)
+      print(i+" ")
 
     //3.利用groupByKey进行分组
     val scoreList=Array(Tuple2("class1",90),Tuple2("class2",75),

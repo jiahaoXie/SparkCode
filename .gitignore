@@ -3,7 +3,16 @@
 ### Example user template
 
 # IntelliJ project files
+kafka_checkpoint
+Kafka_Receiver
+META-INF
+metastore_db
 .idea
 *.iml
 out
-gen
+target
+people.parquet
+scalaTest
+StreamingTxt
+spark-warehouse/
+src/test/

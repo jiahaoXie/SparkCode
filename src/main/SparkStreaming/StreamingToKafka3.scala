@@ -5,7 +5,7 @@ import org.apache.spark.streaming.{Seconds, StreamingContext}
 import org.apache.spark.{SparkConf, SparkContext}
 
 /**
-  * KafkaUtils.createDstream方式（基于kafka低级API--偏移量由客户端保存）
+  * KafkaUtils.createDirectStream方式（基于kafka低级API--偏移量由客户端保存）
   * 利用sparkStreaming对接kafka实现单词计数--采用Direct(低级API)
   * @author xjh 2018.10.10
   */
